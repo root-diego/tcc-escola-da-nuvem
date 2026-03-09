@@ -1,4 +1,3 @@
-```markdown
 # CloudVigia ☁️🌎
 
 Plataforma em nuvem para monitoramento urbano inteligente utilizando **AWS, Inteligência Artificial e participação cidadã**.
