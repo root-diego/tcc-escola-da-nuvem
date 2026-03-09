@@ -1,0 +1,111 @@
+{
+  "cities": [
+    {
+      "id": "sp",
+      "name": "São Paulo",
+      "population": 12300000,
+      "area": 1521,
+      "reports": 1247,
+      "resolved": 934,
+      "avgResponseTime": 3.2,
+      "activeReports": 313,
+      "monthlyGrowth": 12
+    },
+    {
+      "id": "rj",
+      "name": "Rio de Janeiro",
+      "population": 6748000,
+      "area": 1200,
+      "reports": 892,
+      "resolved": 678,
+      "avgResponseTime": 4.1,
+      "activeReports": 214,
+      "monthlyGrowth": 8
+    },
+    {
+      "id": "bh",
+      "name": "Belo Horizonte",
+      "population": 2512000,
+      "area": 331,
+      "reports": 543,
+      "resolved": 412,
+      "avgResponseTime": 2.8,
+      "activeReports": 131,
+      "monthlyGrowth": 15
+    },
+    {
+      "id": "curitiba",
+      "name": "Curitiba",
+      "population": 1933000,
+      "area": 435,
+      "reports": 421,
+      "resolved": 389,
+      "avgResponseTime": 2.1,
+      "activeReports": 32,
+      "monthlyGrowth": 5
+    },
+    {
+      "id": "poa",
+      "name": "Porto Alegre",
+      "population": 1483000,
+      "area": 496,
+      "reports": 398,
+      "resolved": 312,
+      "avgResponseTime": 3.5,
+      "activeReports": 86,
+      "monthlyGrowth": 9
+    }
+  ],
+  "problemTypes": [
+    {
+      "id": "irregular_waste",
+      "name": "Descarte Irregular de Resíduos",
+      "description": "Lixo doméstico ou comercial descartado em locais inadequados",
+      "color": "#ef4444",
+      "icon": "fa-trash"
+    },
+    {
+      "id": "clogged_drain",
+      "name": "Bueiro/Boca de Lobo Entupida",
+      "description": "Sistemas de drenagem obstruídos por resíduos",
+      "color": "#3b82f6",
+      "icon": "fa-water"
+    },
+    {
+      "id": "construction_waste",
+      "name": "Entulho de Construção",
+      "description": "Resíduos de construção civil descartados irregularmente",
+      "color": "#f59e0b",
+      "icon": "fa-brick"
+    },
+    {
+      "id": "flood_risk",
+      "name": "Ponto de Alagamento",
+      "description": "Áreas com risco de inundação durante chuvas",
+      "color": "#10b981",
+      "icon": "fa-tint"
+    },
+    {
+      "id": "illegal_dumping",
+      "name": "Descarte Ilegal",
+      "description": "Descarte de materiais perigosos ou volumosos em locais proibidos",
+      "color": "#8b5cf6",
+      "icon": "fa-ban"
+    }
+  ],
+  "systemStats": {
+    "totalUsers": 14827,
+    "monthlyActiveUsers": 4231,
+    "totalReports": 2847,
+    "reportsLast30Days": 382,
+    "avgResolutionTime": 3.2,
+    "resolutionRate": 82.3,
+    "userSatisfaction": 4.7
+  },
+  "apiStatus": {
+    "status": "operational",
+    "uptime": 99.8,
+    "responseTime": 145,
+    "lastUpdated": "2024-10-05T10:30:00Z"
+  }
+}

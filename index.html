@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CloudVigia - Sistema Inteligente de Monitoramento Urbano</title>
+    <meta name="description" content="Plataforma em nuvem com IA para combater o descarte irregular de resíduos e fortalecer a drenagem urbana.">
+    <meta name="keywords" content="monitoramento urbano, descarte irregular, drenagem, cidades inteligentes, IA, denúncia ambiental">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">
+                    <i class="fas fa-cloud-sun"></i>
+                    <div class="logo-text">
+                        <h1>CloudVigia</h1>
+                                    </div>
+                </a>
+                
+                <nav class="main-nav">
+                    <ul class="nav-list">
+                        <li><a href="#problem" class="nav-link">O Problema</a></li>
+                        <li><a href="#solution" class="nav-link">Nossa Solução</a></li>
+                        <li><a href="#report" class="nav-link">Fazer Denúncia</a></li>
+                        <li><a href="#dashboard" class="nav-link">Dashboard</a></li>
+                        <li><a href="#about" class="nav-link">Sobre</a></li>
+                    </ul>
+                </nav>
+                
+                <div class="header-actions">
+                    <button class="btn btn-outline btn-sm" id="collectionPointsBtn">
+                        <i class="fas fa-map-marker-alt"></i> Pontos de Coleta
+                    </button>
+                    <button class="btn btn-primary btn-sm" id="loginBtn">
+                        <i class="fas fa-user"></i> Entrar
+                    </button>
+                    <button class="mobile-menu-btn" id="mobileMenuBtn">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="badge">Plataforma em Nuvem com IA</div>
+                    <h1 class="hero-title">Transformando Dados em Cidades mais Resilientes</h1>
+                    <p class="hero-description">Sistema inteligente de monitoramento urbano que conecta cidadãos, governo e empresas para combater o descarte irregular de resíduos e prevenir alagamentos.</p>
+                    <div class="hero-actions">
+                        <button class="btn btn-primary btn-lg" id="reportBtn">
+                            <i class="fas fa-bullhorn"></i> Fazer Denúncia Agora
+                        </button>
+                        <button class="btn btn-outline btn-lg" id="watchVideoBtn">
+                            <i class="fas fa-play-circle"></i> Ver Vídeo Explicativo
+                        </button>
+                    </div>
+                    
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <div class="stat-number" id="reportsCount">2,847</div>
+                            <div class="stat-label">Denúncias Ativas</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" id="resolvedCount">1,923</div>
+                            <div class="stat-label">Casos Resolvidos</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" id="responseTime">3.2</div>
+                            <div class="stat-label">Dias para Resposta (média)</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" id="citiesCount">18</div>
+                            <div class="stat-label">Cidades Atendidas</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="hero-visual">
+                    <div class="map-container">
+                        <div id="mainMap"></div>
+                        <div class="map-legend">
+                            <div class="legend-item">
+                                <span class="legend-color" style="background-color: #ef4444;"></span>
+                                <span class="legend-text">Descarte Irregular</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-color" style="background-color: #3b82f6;"></span>
+                                <span class="legend-text">Bueiro Entupido</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-color" style="background-color: #10b981;"></span>
+                                <span class="legend-text">Resolvido</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="problem-section" id="problem">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Impacto Social</span>
+                <h2 class="section-title">O Impacto em Cascata das Enchentes Urbanas</h2>
+                <p class="section-subtitle">O descarte irregular de resíduos gera um ciclo vicioso que afeta toda a sociedade e a economia local</p>
+            </div>
+            
+            <div class="problem-grid">
+                <div class="problem-card">
+                    <div class="problem-icon">
+                        <i class="fas fa-home-heart"></i>
+                    </div>
+                    <h3 class="problem-title">Impacto Social</h3>
+                    <ul class="problem-list">
+                        <li><i class="fas fa-exclamation-triangle"></i> Risco à segurança pública</li>
+                        <li><i class="fas fa-house-flood-water"></i> Danos a residências</li>
+                        <li><i class="fas fa-hospital-user"></i> Aumento de doenças</li>
+                        <li><i class="fas fa-road-barrier"></i> Isolamento de comunidades</li>
+                    </ul>
+                </div>
+                
+                <div class="problem-card">
+                    <div class="problem-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="problem-title">Impacto Econômico</h3>
+                    <ul class="problem-list">
+                        <li><i class="fas fa-truck-loading"></i> Perdas no comércio</li>
+                        <li><i class="fas fa-traffic-light"></i> Paralisação do transporte</li>
+                        <li><i class="fas fa-wrench"></i> Custos de reparos</li>
+                        <li><i class="fas fa-hand-holding-usd"></i> Desvalorização imobiliária</li>
+                    </ul>
+                </div>
+                
+                <div class="problem-card">
+                    <div class="problem-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3 class="problem-title">Impacto Ambiental</h3>
+                    <ul class="problem-list">
+                        <li><i class="fas fa-fish"></i> Contaminação de rios</li>
+                        <li><i class="fas fa-trash"></i> Poluição do solo</li>
+                        <li><i class="fas fa-recycle"></i> Perda de recicláveis</li>
+                        <li><i class="fas fa-temperature-high"></i> Ilhas de calor urbanas</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="problem-stats">
+                <div class="problem-stat">
+                    <div class="problem-stat-number">R$ 3.2 <span class="stat-unit">bilhões</span></div>
+                    <div class="problem-stat-desc">Prejuízo anual com enchentes no Brasil</div>
+                </div>
+                <div class="problem-stat">
+                    <div class="problem-stat-number">42%</div>
+                    <div class="problem-stat-desc">Aumento de casos de dengue em áreas alagadas</div>
+                </div>
+                <div class="problem-stat">
+                    <div class="problem-stat-number">78 <span class="stat-unit">milhões</span></div>
+                    <div class="problem-stat-desc">Toneladas de resíduos mal destinados por ano</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="solution-section" id="solution">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Nossa Tecnologia</span>
+                <h2 class="section-title">Como o CloudVigia Transforma a Gestão Urbana</h2>
+                <p class="section-subtitle">Integração de IA, dados geoespaciais e participação cidadã para uma resposta rápida e eficiente</p>
+            </div>
+            
+            <div class="journey-container">
+                <div class="journey-steps">
+                    <div class="step active" id="step1">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <div class="step-icon">
+                                <i class="fas fa-search-location"></i>
+                            </div>
+                            <h3 class="step-title">Identificação Inteligente</h3>
+                            <p class="step-description">Cidadão identifica problema ou sistema detecta automaticamente via imagens de satélite e sensores IoT</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step" id="step2">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <div class="step-icon">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <h3 class="step-title">Denúncia Simplificada</h3>
+                            <p class="step-description">App envia foto georreferenciada automaticamente para nossa plataforma em nuvem</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step" id="step3">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <div class="step-icon">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <h3 class="step-title">Processamento com IA</h3>
+                            <p class="step-description">Algoritmos classificam urgência e encaminham para órgãos competentes automaticamente</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step" id="step4">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <div class="step-icon">
+                                <i class="fas fa-tasks"></i>
+                            </div>
+                            <h3 class="step-title">Gestão e Resolução</h3>
+                            <p class="step-description">Equipes municipais recebem alertas e gerenciam resolução com transparência total</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="journey-visual">
+                    <!-- Versão simplificada -->
+<div class="journey-visual">
+    <div class="simple-flow">
+        <div class="flow-item">
+            <div class="flow-icon">
+                <i class="fas fa-user-circle"></i>
+            </div>
+            <div class="flow-label">Cidadão</div>
+        </div>
+        
+        <div class="flow-arrow">
+            <i class="fas fa-arrow-right"></i>
+        </div>
+        
+        <div class="flow-item">
+            <div class="flow-icon">
+                <i class="fas fa-mobile-alt"></i>
+            </div>
+            <div class="flow-label">App Mobile</div>
+        </div>
+        
+        <div class="flow-arrow">
+            <i class="fas fa-arrow-right"></i>
+        </div>
+        
+        <div class="flow-item">
+            <div class="flow-icon">
+                <i class="fas fa-cloud"></i>
+            </div>
+            <div class="flow-label">Plataforma Cloud</div>
+        </div>
+        
+        <div class="flow-arrow">
+            <i class="fas fa-arrow-right"></i>
+        </div>
+        
+        <div class="flow-item">
+            <div class="flow-icon">
+                <i class="fas fa-city"></i>
+            </div>
+            <div class="flow-label">Prefeitura</div>
+        </div>
+        
+        <div class="flow-arrow">
+            <i class="fas fa-arrow-right"></i>
+        </div>
+        <div class="flow-item">
+            <div class="flow-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <div class="flow-label">Resolução</div>
+        </div>
+    </div>
+</div>
+    </section>
+
+    <!-- Report Section -->
+    <section class="report-section" id="report">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Faça sua Parte</span>
+                <h2 class="section-title">Denuncie um Problema em sua Cidade</h2>
+                <p class="section-subtitle">Sua participação é essencial para construirmos cidades mais limpas e seguras</p>
+            </div>
+            
+            <div class="report-container">
+                <div class="report-form-container">
+                    <div class="form-header">
+                        <h3><i class="fas fa-file-alt"></i> Nova Denúncia</h3>
+                        <p class="form-subtitle">Preencha os dados abaixo para registrar um novo problema</p>
+                    </div>
+                    
+                    <form id="reportForm" class="report-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="problemType" class="form-label">Tipo de Problema *</label>
+                                <select id="problemType" class="form-control" required>
+                                    <option value="">Selecione uma opção</option>
+                                    <option value="irregular_waste">Descarte Irregular de Resíduos</option>
+                                    <option value="clogged_drain">Bueiro/Boca de Lobo Entupida</option>
+                                    <option value="construction_waste">Entulho de Construção</option>
+                                    <option value="flood_risk">Ponto de Alagamento</option>
+                                    <option value="illegal_dumping">Descarte Ilegal em Terreno Baldio</option>
+                                    <option value="other">Outro</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="urgency" class="form-label">Nível de Urgência *</label>
+                                <select id="urgency" class="form-control" required>
+                                    <option value="">Selecione a urgência</option>
+                                    <option value="low">Baixa (problema crônico)</option>
+                                    <option value="medium">Média (problema recente)</option>
+                                    <option value="high">Alta (risco iminente)</option>
+                                    <option value="critical">Crítica (emergência)</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="location" class="form-label">Localização *</label>
+                            <div class="location-input">
+                                <input type="text" id="location" class="form-control" placeholder="Clique no mapa para selecionar ou digite o endereço" required>
+                                <button type="button" class="btn-location" id="getLocationBtn">
+                                    <i class="fas fa-crosshairs"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="description" class="form-label">Descrição Detalhada *</label>
+                            <textarea id="description" class="form-control form-textarea" rows="4" placeholder="Descreva o problema com detalhes. Inclua informações como volume de resíduos, materiais envolvidos, há quanto tempo existe, etc." required></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Evidência Fotográfica</label>
+                            <div class="upload-container">
+                                <div class="upload-area" id="uploadArea">
+                                    <div class="upload-icon">
+                                        <i class="fas fa-camera"></i>
+                                    </div>
+                                    <p class="upload-text">Arraste e solte uma foto aqui ou <span class="upload-link">clique para selecionar</span></p>
+                                    <p class="upload-note">Formatos suportados: JPG, PNG, HEIC (máx. 10MB)</p>
+                                    <input type="file" id="photoUpload" accept="image/*" style="display: none;">
+                                </div>
+                                <div class="upload-preview" id="uploadPreview"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group form-checkbox">
+                            <input type="checkbox" id="anonymous" class="form-checkbox-input">
+                            <label for="anonymous" class="form-checkbox-label">Enviar denúncia anonimamente</label>
+                        </div>
+                        
+                        <div class="form-group form-checkbox">
+                            <input type="checkbox" id="notifications" class="form-checkbox-input" checked>
+                            <label for="notifications" class="form-checkbox-label">Receber atualizações sobre esta denúncia</label>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-secondary" id="clearFormBtn">
+                                <i class="fas fa-eraser"></i> Limpar
+                            </button>
+                            <button type="submit" class="btn btn-primary" id="submitReportBtn">
+                                <i class="fas fa-paper-plane"></i> Enviar Denúncia
+                            </button>
+                        </div>
+                        
+                        <p class="form-note">* Campos obrigatórios. Sua denúncia será analisada pela nossa equipe em até 24 horas úteis.</p>
+                    </form>
+                </div>
+                
+                <div class="report-preview-container">
+                    <div class="preview-header">
+                        <h3><i class="fas fa-eye"></i> Pré-visualização</h3>
+                        <div class="preview-status" id="previewStatus">Rascunho</div>
+                    </div>
+                    
+                    <div class="preview-map" id="previewMap"></div>
+                    
+                    <div class="preview-details">
+                        <div class="preview-section">
+                            <h4><i class="fas fa-info-circle"></i> Informações da Denúncia</h4>
+                            <div class="detail-item">
+                                <span class="detail-label">ID:</span>
+                                <span class="detail-value" id="previewId">-</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Tipo:</span>
+                                <span class="detail-value" id="previewType">Não definido</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Urgência:</span>
+                                <span class="detail-value" id="previewUrgency">Não definida</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Localização:</span>
+                                <span class="detail-value" id="previewLocation">Não selecionada</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Data:</span>
+                                <span class="detail-value" id="previewDate">-</span>
+                            </div>
+                        </div>
+                        
+                        <div class="preview-section">
+                            <h4><i class="fas fa-chart-line"></i> Estatísticas Locais</h4>
+                            <div class="preview-stats">
+                                <div class="preview-stat">
+                                    <div class="preview-stat-value" id="localReports">0</div>
+                                    <div class="preview-stat-label">Denúncias na área</div>
+                                </div>
+                                <div class="preview-stat">
+                                    <div class="preview-stat-value" id="avgResolution">0</div>
+                                    <div class="preview-stat-label">Dias para resolução (média)</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dashboard Section -->
+    <section class="dashboard-section" id="dashboard">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Dados em Tempo Real</span>
+                <h2 class="section-title">Dashboard de Monitoramento Urbano</h2>
+                <p class="section-subtitle">Acompanhe em tempo real as denúncias, resoluções e métricas das cidades atendidas</p>
+            </div>
+            
+            <div class="dashboard-filters">
+                <div class="filter-group">
+                    <label for="cityFilter" class="filter-label">Cidade:</label>
+                    <select id="cityFilter" class="filter-select">
+                        <option value="all">Todas as Cidades</option>
+                        <option value="sao-paulo">São Paulo</option>
+                        <option value="rio-de-janeiro">Rio de Janeiro</option>
+                        <option value="belo-horizonte">Maceió</option>
+                        <option value="curitiba">Curitiba</option>
+                        <option value="porto-alegre">Porto Alegre</option>
+                        <option value="recife">Recife</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="timeFilter" class="filter-label">Período:</label>
+                    <select id="timeFilter" class="filter-select">
+                        <option value="7d">Últimos 7 dias</option>
+                        <option value="30d" selected>Últimos 30 dias</option>
+                        <option value="90d">Últimos 90 dias</option>
+                        <option value="1y">Último ano</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="typeFilter" class="filter-label">Tipo:</label>
+                    <select id="typeFilter" class="filter-select">
+                        <option value="all">Todos os tipos</option>
+                 
+                        <option value="irregular_waste">Descarte Irregular</option>
+                        <option value="clogged_drain">Bueiros Entupidos</option>
+                        <option value="construction_waste">Entulho</option>
+                        <option value="flood_risk">Risco de Alagamento</option>
+                    </select>
+                </div>
+                
+                <button class="btn btn-outline" id="exportDataBtn">
+                    <i class="fas fa-download"></i> Exportar Dados
+                </button>
+            </div>
+            
+            <div class="dashboard-stats">
+                <div class="stat-card">
+                    <div class="stat-card-header">
+                        <h4><i class="fas fa-bullhorn"></i> Denúncias Ativas</h4>
+                        <div class="stat-change positive">
+                            <i class="fas fa-arrow-up"></i> 12%
+                        </div>
+                    </div>
+                    <div class="stat-card-body">
+                        <div class="stat-number" id="dashboardActiveReports">924</div>
+                        <div class="stat-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 65%"></div>
+                            </div>
+                            <div class="progress-text">65% das denúncias em análise</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-card-header">
+                        <h4><i class="fas fa-check-circle"></i> Casos Resolvidos</h4>
+                        <div class="stat-change positive">
+                            <i class="fas fa-arrow-up"></i> 8%
+                        </div>
+                    </div>
+                    <div class="stat-card-body">
+                        <div class="stat-number" id="dashboardResolved">1,923</div>
+                        <div class="stat-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 82%"></div>
+                            </div>
+                            <div class="progress-text">82% de resolução em até 7 dias</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-card-header">
+                        <h4><i class="fas fa-clock"></i> Tempo Médio de Resposta</h4>
+                        <div class="stat-change negative">
+                            <i class="fas fa-arrow-down"></i> 15%
+                        </div>
+                    </div>
+                    <div class="stat-card-body">
+                        <div class="stat-number">3.2 <span class="stat-unit">dias</span></div>
+                        <div class="stat-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 45%"></div>
+                            </div>
+                            <div class="progress-text">Redução de 15% no último mês</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-card-header">
+                        <h4><i class="fas fa-users"></i> Engajamento Cidadão</h4>
+                        <div class="stat-change positive">
+                            <i class="fas fa-arrow-up"></i> 23%
+                        </div>
+                    </div>
+                    <div class="stat-card-body">
+                        <div class="stat-number">14,827</div>
+                        <div class="stat-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 78%"></div>
+                            </div>
+                            <div class="progress-text">78% dos usuários são reincidentes</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="dashboard-charts">
+                <div class="chart-container">
+                    <div class="chart-header">
+                        <h4><i class="fas fa-chart-bar"></i> Denúncias por Tipo</h4>
+                        <div class="chart-legend">
+                            <div class="legend-item">
+                                <span class="legend-color" style="background-color: #ef4444;"></span>
+                                <span>Descarte Irregular</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-color" style="background-color: #3b82f6;"></span>
+                                <span>Bueiros</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-color" style="background-color: #f59e0b;"></span>
+                                <span>Entulho</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-body">
+                        <canvas id="typeChart"></canvas>
+                    </div>
+                </div>
+                
+                <div class="chart-container">
+                    <div class="chart-header">
+                        <h4><i class="fas fa-chart-line"></i> Tendência Mensal</h4>
+                        <div class="chart-legend">
+                            <div class="legend-item">
+                                <span class="legend-color" style="background-color: #10b981;"></span>
+                                <span>Denúncias</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-color" style="background-color: #8b5cf6;"></span>
+                                <span>Resoluções</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-body">
+                        <canvas id="trendChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="reports-table-container">
+                <div class="table-header">
+                    <h4><i class="fas fa-table"></i> Denúncias Recentes</h4>
+                    <div class="table-actions">
+                        <button class="btn btn-sm btn-outline" id="refreshTableBtn">
+                            <i class="fas fa-sync-alt"></i> Atualizar
+                        </button>
+                    </div>
+                </div>
+                <div class="reports-table">
+                    <table id="reportsTable">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Tipo</th>
+                                <th>Localização</th>
+                                <th>Data</th>
+                                <th>Status</th>
+                                <th>Urgência</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="reportsTableBody">
+                            <!-- Data will be loaded by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Sobre o Projeto</span>
+                <h2 class="section-title">CloudVigia: Tecnologia para Cidades Inteligentes</h2>
+                <p class="section-subtitle">Uma iniciativa apoiada pelo programa de extensão em Inteligência Artificial e parcerias com governos.</p>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Nossa Missão</h3>
+                    <p>O CloudVigia é uma plataforma em nuvem que utiliza Inteligência Artificial para conectar a participação comunitária à gestão urbana, criando um ecossistema de monitoramento e resposta rápida ao descarte irregular de resíduos.</p>
+                    
+                    <h3>Tecnologia Utilizada</h3>
+                    <div class="tech-stack">
+                        <div class="tech-item">
+                            <i class="fab fa-aws"></i>
+                            <span>AWS Cloud</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-brain"></i>
+                            <span>Machine Learning</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-map-marked-alt"></i>
+                            <span>Geolocalização</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-mobile-alt"></i>
+                            <span>App Mobile</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-database"></i>
+                            <span>Big Data</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-chart-network"></i>
+                            <span>APIs Integradas</span>
+                        </div>
+                    </div>
+                    
+                    <h3>Próximos Passos</h3>
+                    <p>Estamos expandindo para mais 12 cidades até o final de 2026 e desenvolvendo novos módulos de previsão de alagamentos e integração com sistemas de coleta seletiva.</p>
+                    
+                    <div class="about-actions">
+                        <button class="btn btn-primary" id="contactBtn">
+                            <i class="fas fa-envelope"></i> Contate-nos
+                        </button>
+                        <button class="btn btn-outline" id="documentationBtn">
+                            <i class="fas fa-book"></i> Documentação
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="about-team">
+                    <h3>Equipe do Projeto</h3>
+                    <div class="team-grid">
+                        <div class="team-member">
+                            <div class="member-avatar">
+                                <i class="fas fa-user-tie"></i>
+                            </div>
+                            <div class="member-info">
+                                <h4>Julio Leite</h4>
+                                <p>Engenheiro Cloud</p>
+                                <div class="member-tags">
+                                    <span class="member-tag">IA</span>
+                                    <span class="member-tag">Cloud</span>
+                                    <span class="member-tag">DevOps</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="team-member">
+                            <div class="member-avatar">
+                                <i class="fas fa-user-graduate"></i>
+                            </div>
+                            <div class="member-info">
+                                <h4>Diego Gonçalves</h4>
+                                <p>Arquiteto de soluções</p>
+                                <div class="member-tags">
+                                    <span class="member-tag">Frontend</span>
+                                    <span class="member-tag">UX</span>
+                                    <span class="member-tag">DevOps</span>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section class="partners-section">
+        <div class="container">
+            <div class="partners-header">
+                <h3>Parceiros e Apoiadores</h3>
+                <p>Organizações que acreditam na transformação das cidades através da tecnologia</p>
+            </div>
+            
+            <div class="partners-grid">
+                <div class="partner-logo">
+                    <i class="fas fa-university"></i>
+                    <span>Prefeitura de Maceió</span>
+                </div>
+                <div class="partner-logo">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>Universidade Federal de Alagoas</span>
+                </div>
+                <div class="partner-logo">
+                    <i class="fas fa-industry"></i>
+                    <span>Instituto de Tecnologia de Maceió</span>
+                </div>
+                <div class="partner-logo">
+                    <i class="fas fa-leaf"></i>
+                    <span>Ministério do Meio Ambiente</span>
+                </div>
+                <div class="partner-logo">
+                    <i class="fas fa-handshake"></i>
+                    <span>ONU Habitat</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <div class="footer-logo">
+                        <i class="fas fa-cloud-sun"></i>
+                        <div>
+                            <h3>CloudVigia</h3>
+                            <p class="footer-tagline">Cidades Inteligentes & Resilientes</p>
+                        </div>
+                    </div>
+                    <p class="footer-description">Plataforma em nuvem com IA para monitoramento urbano participativo e gestão inteligente de resíduos.</p>
+                    <div class="footer-social">
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h4 class="footer-title">Links Rápidos</h4>
+                    <ul class="footer-links">
+                        <li><a href="#problem">O Problema</a></li>
+                        <li><a href="#solution">Nossa Solução</a></li>
+                        <li><a href="#report">Fazer Denúncia</a></li>
+                        <li><a href="#dashboard">Dashboard</a></li>
+                        <li><a href="#about">Sobre o Projeto</a></li>
+                        <li><a href="#">Política de Privacidade</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4 class="footer-title">Cidades Ativas</h4>
+                    <ul class="footer-links">
+                        <li>São Paulo</li>
+                        <li>Rio de Janeiro</li>
+                        <li>Maceió</li>
+                        <li>Curitiba</li>
+                        <li>Porto Alegre</li>
+                        <li>Salvador</li>
+                        <li>Fortaleza</li>
+                        <li>Brasília</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4 class="footer-title">Contato</h4>
+                    <ul class="footer-contact">
+                        <li><i class="fas fa-envelope"></i> contato@cloudvigia.com.br</li>
+                        <li><i class="fas fa-phone"></i> (82) 99999-9999</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Avenida Fernandes Lima, 100 - Maceio/AL</li>
+                    </ul>
+                    
+                    <div class="footer-apps">
+                        <h5>Baixe nosso app</h5>
+                        <div class="app-badges">
+                            <button class="app-badge">
+                                <i class="fab fa-apple"></i>
+                                <div>
+                                    <span>Disponível na</span>
+                                    <strong>App Store</strong>
+                                </div>
+                            </button>
+                            <button class="app-badge">
+                                <i class="fab fa-google-play"></i>
+                                <div>
+                                    <span>Disponível no</span>
+                                    <strong>Google Play</strong>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="copyright">
+                    © 2026 CloudVigia. Todos os direitos reservados.
+                </div>
+                <div class="footer-bottom-links">
+                    <a href="#">Termos de Uso</a>
+                    <a href="#">Política de Privacidade</a>
+                    <a href="#">Cookies</a>
+                    <a href="#">Acessibilidade</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal -->
+    <div class="modal" id="successModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-check-circle" style="color: #10b981;"></i> Denúncia Enviada com Sucesso!</h3>
+                <button class="modal-close" id="modalCloseBtn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Sua denúncia foi registrada com sucesso e já está em análise pela nossa equipe.</p>
+                <div class="modal-details">
+                    <div class="modal-detail">
+                        <strong>ID da Denúncia:</strong> <span id="modalReportId">CV-2024-0482</span>
+                    </div>
+                    <div class="modal-detail">
+                        <strong>Status atual:</strong> <span class="status-received">Recebida</span>
+                    </div>
+                    <div class="modal-detail">
+                        <strong>Previsão de análise:</strong> <span>Até 24 horas úteis</span>
+                    </div>
+                </div>
+                <p>Você receberá atualizações por e-mail sobre o andamento da sua denúncia.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" id="modalPrintBtn">
+                    <i class="fas fa-print"></i> Imprimir Comprovante
+                </button>
+                <button class="btn btn-primary" id="modalOkBtn">
+                    <i class="fas fa-check"></i> Entendi
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner"></div>
+        <p>Processando sua solicitação...</p>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
