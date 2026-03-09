@@ -256,4 +256,3 @@ O objetivo foi aplicar na prática conhecimentos de:
 # 📄 Licença
 
 Projeto educacional desenvolvido para fins acadêmicos.
-```
