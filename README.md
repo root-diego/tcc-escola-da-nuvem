@@ -231,6 +231,6 @@ MIT License (C)
 
 # 🧠 Autores
 
-Diego S. Gonçalves | [LINKEDIN:](https://www.linkedin.com/in/root-diego/)
+Diego S. Gonçalves | [LinkedIn](https://www.linkedin.com/in/root-diego/)
 
-Júlio Leite | [LINKEDIN:](https://www.linkedin.com/in/julioleitee/)
+Júlio Leite | [LinkedIn](https://www.linkedin.com/in/julioleitee/)
