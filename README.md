@@ -231,4 +231,4 @@ O objetivo foi aplicar na prática conhecimentos de:
 
 # 📄 Licença
 
-MIT License
+MIT License (C)
