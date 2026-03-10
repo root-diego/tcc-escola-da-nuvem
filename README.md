@@ -1,8 +1,8 @@
-# CloudVigia ☁️🌎
+# Projeto CloudVigia ☁️🌎
 
 Plataforma em nuvem para monitoramento urbano inteligente utilizando **AWS, Inteligência Artificial e participação cidadã**.
 
-O projeto foi desenvolvido como **Trabalho de Conclusão do programa AWS re/Start + IA da Escola da Nuvem**, demonstrando na prática a aplicação de arquitetura cloud moderna, serverless e escalável.
+O projeto foi desenvolvido como **Trabalho de Conclusão do programa AWS re/Start + IA da Escola da Nuvem ☁️**, demonstrando na prática a aplicação de arquitetura cloud moderna, serverless e escalável.
 
 ---
 
@@ -214,11 +214,7 @@ index.html
 
 # 📚 Contexto Acadêmico
 
-Projeto desenvolvido como **Trabalho de Conclusão do programa:**
-
-- AWS re/Start  
-- Inteligência Artificial  
-- Escola da Nuvem  
+Projeto desenvolvido como **Trabalho de Conclusão do programa: AWS re/Start da Escola da Nuvem ☁️**
 
 O objetivo foi aplicar na prática conhecimentos de:
 
@@ -232,3 +228,9 @@ O objetivo foi aplicar na prática conhecimentos de:
 # 📄 Licença
 
 MIT License (C)
+
+# 🧠 Autores
+
+Diego S. Gonçalves | [LINKEDIN:](https://www.linkedin.com/in/root-diego/)
+
+Júlio Leite | [LINKEDIN:](https://www.linkedin.com/in/julioleitee/)
