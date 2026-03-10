@@ -12,8 +12,6 @@ O projeto foi desenvolvido como **Trabalho de Conclusão do programa AWS re/Star
 
 A solução conecta **participação comunitária, análise inteligente de imagens e gestão pública**, criando um ecossistema de monitoramento urbano baseado em dados.
 
----
-
 # 🎯 Problema
 
 O descarte irregular de resíduos frequentemente causa:
