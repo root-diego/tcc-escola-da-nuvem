@@ -24,8 +24,6 @@ O descarte irregular de resíduos frequentemente causa:
 
 Além disso, muitas cidades não possuem **um canal eficiente para que cidadãos reportem esses problemas**.
 
----
-
 # 💡 Solução
 
 O **CloudVigia** resolve esse problema através de uma plataforma que permite:
@@ -35,8 +33,6 @@ O **CloudVigia** resolve esse problema através de uma plataforma que permite:
 3. Armazenar e organizar os dados das ocorrências
 4. Notificar responsáveis pela limpeza urbana
 5. Permitir acompanhamento do status da denúncia
-
----
 
 # 🚀 Funcionalidades
 
@@ -55,8 +51,6 @@ O **CloudVigia** resolve esse problema através de uma plataforma que permite:
 - Visualização em mapas
 - Dados simulados realistas
 - Interface responsiva (mobile-first)
-
----
 
 # 🧰 Tecnologias Utilizadas
 
@@ -89,8 +83,6 @@ Fluxo geral da aplicação:
 
 ![Arquitetura CloudVigia](docs/arquitetura.jpg)
 
----
-
 # 🔎 Explicação das Escolhas de Arquitetura
 
 ## Amazon API Gateway
@@ -105,8 +97,6 @@ Motivos da escolha:
 - Elimina necessidade de servidores dedicados
 
 Ele recebe as denúncias enviadas pelo frontend (foto + dados).
-
----
 
 ## AWS Lambda
 
@@ -127,8 +117,6 @@ Motivos da escolha:
 - Custo baseado em execução
 - Ideal para workloads baseadas em eventos
 
----
-
 ## Amazon S3
 
 O **Amazon S3** é utilizado para armazenar as imagens enviadas pelos usuários.
@@ -139,8 +127,6 @@ Motivos da escolha:
 - Armazenamento altamente escalável
 - Integração nativa com serviços de IA
 - Baixo custo para armazenamento de arquivos
-
----
 
 ## Amazon Rekognition
 
@@ -156,8 +142,6 @@ Motivos da escolha:
 - Serviço de **IA totalmente gerenciado**
 - Fácil integração com S3
 - Não exige treinamento de modelos para casos simples
-
----
 
 ## Amazon DynamoDB
 
@@ -177,8 +161,6 @@ Motivos da escolha:
 - Totalmente gerenciado
 - Integração nativa com Lambda
 
----
-
 ## Amazon SNS
 
 O **Amazon Simple Notification Service (SNS)** é utilizado para enviar notificações.
@@ -193,8 +175,6 @@ Motivos da escolha:
 - Comunicação assíncrona
 - Arquitetura orientada a eventos
 - Alta escalabilidade
-
----
 
 # 📊 Benefícios da Arquitetura
 
@@ -232,8 +212,6 @@ index.html
 
 3. Execute em um navegador moderno.
 
----
-
 # 📚 Contexto Acadêmico
 
 Projeto desenvolvido como **Trabalho de Conclusão do programa:**
@@ -245,9 +223,9 @@ Projeto desenvolvido como **Trabalho de Conclusão do programa:**
 O objetivo foi aplicar na prática conhecimentos de:
 
 - Arquitetura em nuvem
-- Desenvolvimento web
+- Programação
 - Integração com serviços AWS
-- Sistemas inteligentes
+- Sistemas com IA
 
 ---
 
